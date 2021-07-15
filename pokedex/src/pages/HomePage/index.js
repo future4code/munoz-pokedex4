@@ -13,9 +13,8 @@ const Container = styled.div `
 background-color: #1C1C1C;
 `
 
- export function HomePage() {
-    const [pokemon, setPokemon] = useState([{ }])
-    const [pokedex, setPokedex] = useState([])
+ export function HomePage(props) {
+    
     const history = useHistory()
 
     const listPokedex = () => {
@@ -30,7 +29,7 @@ background-color: #1C1C1C;
         axios.get("https://pokeapi.co/api/v2/pokemon")
         .then((response) => {
             console.log(response.data.results);
-            setPokemon(response.data.results)
+            props.setPokemon(response.data.results)
         })
         .catch((error) => {
             console.log(error.response);
@@ -40,13 +39,13 @@ background-color: #1C1C1C;
         <Container>
             <button onClick={listPokedex}>pokedex</button>
            <Card>
-           {pokemon.map((val, idx) => {
+           {props.pokemon.map((val, idx) => {
                return <Pokemon key={idx}
                thisPokemon={val}
-               pokemon={pokemon}
-               setPokemon={setPokemon}
-               pokedex={pokedex}
-               setPokedex={setPokedex}
+               pokemon={props.pokemon}
+               setPokemon={props.setPokemon}
+               pokedex={props.pokedex}
+               setPokedex={props.setPokedex}
                />
            })}
            </Card>

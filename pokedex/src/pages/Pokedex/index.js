@@ -1,8 +1,8 @@
-import React from 'react'
+
 import { useHistory } from 'react-router-dom';
 
 
- export function Pokedex () {
+ export function Pokedex (props) {
 
     const history = useHistory()
 
@@ -12,9 +12,22 @@ import { useHistory } from 'react-router-dom';
     const homeList = () => {
         history.goBack("/")
     }
+
+    
+
+    
+
     return(
         <div>
             <h1>Pokedex Adicionado</h1>
+            {props.pokedex.map((list) => {
+                console.log("cccccc", list.name);
+                return( <div>
+                    <p>{list.name}</p>
+                    <img src={list.sprites.front_default}></img>
+                    </div>
+                )
+            })}
             <button onClick={detailPokedex}>lista pokedex</button>
             <button onClick={homeList}>Home</button>
         </div>

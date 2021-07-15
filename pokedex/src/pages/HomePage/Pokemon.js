@@ -52,7 +52,6 @@ margin-top: -1em;
 
 
  export function Pokemon (props) {
-    const [pokedex, setPokedex] = useState([])
     const [poke, setPoke] = useState({
         name: " ",
         sprites: {
@@ -74,8 +73,12 @@ margin-top: -1em;
     },[])
 
     const AddPokemon = () => {
-        
+        const listPokemons = props.pokedex.slice([])
+        listPokemons.push(poke)
+    props.setPokedex(listPokemons)   
     }
+
+    console.log("adicionado", props.pokedex);
     return(
         <Card>
             <ContainerNomePokemon>
@@ -83,7 +86,7 @@ margin-top: -1em;
                 <NomePokemon>{poke.name}</NomePokemon>
             </ContainerNomePokemon>
             <ContainerBotao>
-                    <BotaoAdd onClick={() =>AddPokemon(poke)}>Adicionar</BotaoAdd>
+                    <BotaoAdd onClick={AddPokemon}>Adicionar</BotaoAdd>
                     <BotaoDetail>Detalhes</BotaoDetail>
             </ContainerBotao>
            

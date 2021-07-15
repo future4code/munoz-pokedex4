@@ -77,8 +77,6 @@ margin-top: -1em;
         listPokemons.push(poke)
     props.setPokedex(listPokemons)   
     }
-
-    console.log("adicionado", props.pokedex);
     return(
         <Card>
             <ContainerNomePokemon>

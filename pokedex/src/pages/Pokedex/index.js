@@ -21,7 +21,7 @@ import { useHistory } from 'react-router-dom';
         <div>
             <h1>Pokedex Adicionado</h1>
             {props.pokedex.map((list) => {
-                console.log("cccccc", list.name);
+                console.log("LIsta", list.name);
                 return( <div>
                     <p>{list.name}</p>
                     <img src={list.sprites.front_default}></img>

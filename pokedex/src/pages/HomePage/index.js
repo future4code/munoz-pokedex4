@@ -14,8 +14,6 @@ background-color: #1C1C1C;
 `
 
  export function HomePage(props) {
-
-    const [numeroPagina, setNumeroPagina] = useState(1);
     
     const history = useHistory()
 
@@ -23,17 +21,12 @@ background-color: #1C1C1C;
         history.push("/pokedex")
     }
 
-    const onClickProxima = () => {
-        setNumeroPagina(numeroPagina + 1);
-      };
-    
-      const onClickAnterior = () => {
-        setNumeroPagina(numeroPagina - 1);
-      };
-
     useEffect(() =>{
-        const offset = (numeroPagina - 1) * 5;
-        axios.get(`https://pokeapi.co/api/v2/pokemon`)
+        list()
+        
+    },[])
+    const list = () => {
+        axios.get("https://pokeapi.co/api/v2/pokemon")
         .then((response) => {
             console.log(response.data.results);
             props.setPokemon(response.data.results)
@@ -41,18 +34,14 @@ background-color: #1C1C1C;
         .catch((error) => {
             console.log(error.response);
         })
-        
-    },[numeroPagina])
-    
-        
-    
+    }
     return(
         <Container>
             <button onClick={listPokedex}>pokedex</button>
            <Card>
-           {props.pokemon.map((name, idx) => {
+           {props.pokemon.map((val, idx) => {
                return <Pokemon key={idx}
-               thisPokemon={name}
+               thisPokemon={val}
                pokemon={props.pokemon}
                setPokemon={props.setPokemon}
                pokedex={props.pokedex}
@@ -60,9 +49,6 @@ background-color: #1C1C1C;
                />
            })}
            </Card>
-           <p>Página: {numeroPagina}</p>
-      <button onClick={onClickAnterior}>Anterior</button>
-      <button onClick={onClickProxima}>Próxima</button>
         </Container>
     )
 }

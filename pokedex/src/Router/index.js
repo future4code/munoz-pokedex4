@@ -8,7 +8,6 @@ import PokedexDetail from "../pages/PokedexDetail/index"
     const [pokemon, setPokemon] = useState([{ }])
     const [pokedex, setPokedex] = useState([])
     
-    
     return(
         <div>
            <BrowserRouter>
@@ -19,7 +18,6 @@ import PokedexDetail from "../pages/PokedexDetail/index"
                    setPokemon={setPokemon}
                    pokedex={pokedex}
                    setPokedex={setPokedex}
-                   
                    />
                </Route>
                <Route exact path={"/pokedex"}>
@@ -28,16 +26,10 @@ import PokedexDetail from "../pages/PokedexDetail/index"
                    setPokemon={setPokemon}
                    pokedex={pokedex}
                    setPokedex={setPokedex}
-                   
                    />
                </Route>
-               <Route exact path={"/detail/:name"}>
-                   <PokedexDetail
-                   pokemon={pokemon}
-                   setPokemon={setPokemon}
-                   pokedex={pokedex}
-                   setPokedex={setPokedex}
-                   />
+               <Route exact path={"/detail/:id"}>
+                   <PokedexDetail/>
                </Route>
            </Switch>
            </BrowserRouter>

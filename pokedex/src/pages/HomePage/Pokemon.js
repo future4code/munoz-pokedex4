@@ -34,16 +34,7 @@ background-color: red;
 border-radius: 3px;
 width: 5em;
 `
-const BotaoDetail = styled.button ` 
-font-size: .8em;
-margin: .5em;
-border: 2px solid yellow;
-color: black;
-background-color: yellow;
-border-radius: 3px;
-width: 5em;
 
-`
 const ContainerBotao = styled.div `
 display: flex;
 justify-content: center; 
@@ -52,12 +43,14 @@ margin-top: -1em;
 
 
  export function Pokemon (props) {
+
     const [poke, setPoke] = useState({
         name: " ",
         sprites: {
             front_default: " "
         }
     })
+    
     const getPokemon = (url) => {
         axios.get(url)
         .then((response) => {
@@ -85,7 +78,6 @@ margin-top: -1em;
             </ContainerNomePokemon>
             <ContainerBotao>
                     <BotaoAdd onClick={AddPokemon}>Adicionar</BotaoAdd>
-                    <BotaoDetail>Detalhes</BotaoDetail>
             </ContainerBotao>
            
         </Card>
